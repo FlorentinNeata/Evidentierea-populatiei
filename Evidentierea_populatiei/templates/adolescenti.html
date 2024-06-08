@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adolescenti</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="persoane-page" type="text/css" style="background-image: url('{{ url_for('static', filename='poze/persoane.gif') }}');">
+    <div class="container">
+        <h1>Adolescenti</h1>
+
+        <div class="table-container">
+            <table border="1">
+                <tr>
+                    <th>ID_Persoana</th>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>Varsta</th>
+                </tr>
+                {% for persoana in adolescenti %}
+                <tr>
+                    <td>{{ persoana.ID_Persoana }}</td>
+                    <td>{{ persoana.Nume }}</td>
+                    <td>{{ persoana.Prenume }}</td>
+                    <td>{{ persoana.Varsta }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="menu-content">
+            <a href="{{ url_for('index') }}" class="home"></a>
+            <a href="{{ url_for('persoane') }}" class="persoane"></a>
+            <a href="{{ url_for('casatorii') }}" class="casatorie"></a>
+            <a href="{{ url_for('adulti') }}" class="categorie2"></a>
+            <a href="{{ url_for('batrani') }}" class="categorie3"></a>
+            <a href="{{ url_for('angajati') }}" class="angajati"></a>
+            <a href="{{ url_for('institutii') }}" class="institutii"></a>
+        </div>
+    </div>
+</body>
+</html>

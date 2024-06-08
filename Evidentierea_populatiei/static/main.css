@@ -1,0 +1,266 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.index-page {
+    background-size: cover;
+    background-image: url('../static/poze/city.gif');
+}
+
+.container {
+    text-align: center;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 5px;
+    color: #f58641;
+    text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    /* filter:   brightness(0%); */
+
+}
+#interogari {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titlu-interogari {
+    text-align: center; /* Centrare text */
+    margin-top: 20px; /* Spațiu deasupra titlului */
+    margin-bottom: 20px; /* Spațiu sub titlu */
+}
+
+
+
+.menu-content a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 80px;
+    width: 80px;
+    background-size: 50%;
+
+}
+
+.menu-content a:hover {
+    color: #818181;
+   
+    transform: scale(1.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Imagini pentru butoanele din meniu */
+.home {
+    background-image: url('../static/poze/house.png');
+}
+
+.persoane {
+    background-image: url('../static/poze/persons.png');
+}
+
+.categorie1 {
+    background-image: url('../static/poze/categorie1.png');
+}
+
+.categorie2 {
+    background-image: url('../static/poze/categorie2.png');
+}
+
+.categorie3 {
+    background-image: url('../static/poze/categorie3.png');
+}
+
+.angajati {
+    background-image: url('../static/poze/angajati.png');
+}
+
+.institutii {
+    background-image: url('../static/poze/institutii.png');
+}
+
+.casatorie {
+    background-image: url('../static/poze/marriage.png');
+}
+
+/* Stiluri specifice pentru pagina persoane */
+.persoane-page {
+    background-size: cover;
+    background-image: url('../static/poze/persoane.gif');
+}
+
+.persoane-page .container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.persoane-page .table-container {
+    max-height: 400px; /* Adjust this height as needed */
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.persoane-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid #ddd; /* Adaugă bordura pentru tabel */
+}
+
+.persoane-page table th, .persoane-page table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.persoane-page table th {
+    background-color: #f58641;
+    color: white;
+    text-align: center;
+}
+
+.persoane-page table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.persoane-page table tr:hover {
+    background-color: #ddd;
+}
+
+.persoane-page .add-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.persoane-page .add-form label {
+    margin-top: 10px;
+}
+
+.persoane-page .add-form input, .persoane-page .add-form button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.persoane-page .add-form button {
+    background-color: #f58641;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.persoane-page .add-form button:hover {
+    background-color: #e07532;
+}
+
+.institutii-page {
+    background-size: cover;
+    background-image: url('../static/poze/corporatii.gif');
+}
+
+.institutii-page .container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.institutii-page .table-container {
+    max-height: 400px; /* Adjust this height as needed */
+    overflow-y: auto;
+    width: 100%;
+}
+
+.institutii-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid #ddd; /* Adaugă bordura pentru tabel */
+}
+
+.institutii-page table th, .institutii-page table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.institutii-page table th {
+    background-color: #f58641;
+    color: white;
+    text-align: center;
+}
+
+.institutii-page table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.institutii-page table tr:hover {
+    background-color: #ddd;
+}
+
+.interogare1
+{
+    background-image: url('../static/poze/1.png');
+}
+.interogare2
+{
+    background-image: url('../static/poze/2.png');
+    }
+.interogare3
+{
+    background-image: url('../static/poze/3.png');
+    }
+.interogare4
+{
+    background-image: url('../static/poze/4.png');
+    }
+.interogare5
+{
+    background-image: url('../static/poze/5.png');
+    }
+.interogare6
+{
+    background-image: url('../static/poze/6.png');
+    }
+.interogare7
+{
+    background-image: url('../static/poze/7.png');
+    }
+.interogare8
+{
+    background-image: url('../static/poze/8.png');
+    
+} 

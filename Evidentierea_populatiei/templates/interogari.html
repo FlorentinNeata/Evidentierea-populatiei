@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezultate Interogare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body.interogari-page {
+            background-image: url('{{ url_for('static', filename='poze/interogari.png') }}');
+            background-position: cover;
+        }
+        .container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            max-width: 80%;
+            margin: auto;
+            max-height: 80vh;
+            overflow-y: scroll;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .return-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="interogari-page">
+    <div class="container">
+        <h1>Rezultate Interogare</h1>
+
+        <div class="rezultate">
+            {% if query_type == 'persoane_sub_30_privat' %}
+                <h2>Persoane sub 30 ani din instituții private:</h2>
+                <table>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Varsta</th>
+                        <th>Nume_Institutie</th>
+                    </tr>
+                    {% for persoana in data %}
+                    <tr>
+                        <td>{{ persoana.Nume }}</td>
+                        <td>{{ persoana.Prenume }}</td>
+                        <td>{{ persoana.Varsta }}</td>
+                        <td>{{ persoana.Nume_Institutie}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif query_type == 'persoane_30_50_angajate_casatorite' %}
+                <h2>Persoane între 30 și 50 de ani, angajate și căsătorite:</h2>
+                <table>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Varsta</th>
+                    </tr>
+                    {% for persoana in data %}
+                    <tr>
+                        <td>{{ persoana.Nume }}</td>
+                        <td>{{ persoana.Prenume }}</td>
+                        <td>{{ persoana.Varsta }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif query_type == 'persoane_neangajate_necasatorite' %}
+            <h2>Informații complete despre persoane:</h2>
+            <table border="1" class="table-container">
+                <tr>
+                    <th>ID Persoană</th>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>Vârstă</th>
+                    <th>Categorie</th>
+                    <th>Nume Instituție</th>
+                    <th>Adresa Instituției</th>
+                    <th>Tip Instituție</th>
+                    <th>Data Angajării</th>
+                    <th>Salariu</th>
+                    <th>Rol în Căsătorie</th>
+                    <th>Data Căsătoriei</th>
+                </tr>
+                {% for persoana in data %}
+                <tr>
+                    <td>{{ persoana.ID_Persoana }}</td>
+                    <td>{{ persoana.Nume }}</td>
+                    <td>{{ persoana.Prenume }}</td>
+                    <td>{{ persoana.Varsta }}</td>
+                    <td>{{ persoana.Categorie }}</td>
+                    <td>{{ persoana.Nume_Institutie }}</td>
+                    <td>{{ persoana.Adresa_Institutie }}</td>
+                    <td>{{ persoana.Tip_Institutie }}</td>
+                    <td>{{ persoana.Data_Angajare }}</td>
+                    <td>{{ persoana.Salariu }}</td>
+                    <td>{{ persoana.Rol_In_Casatorie }}</td>
+                    <td>{{ persoana.Data_Casatorie }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% elif query_type == 'persoane_peste_medie' %}
+                <h2>Persoanele cu varsta mai mare decat varsta medie:</h2>
+                <table>
+                    <tr>
+                        <th>Nume </th>
+                        <th>Prenume</th>
+                        <th>Varsta</th>
+                    </tr>
+                    {% for persoana in data %}
+                    <tr>
+                        <td>{{ persoana.Nume }}</td>
+                        <td>{{ persoana.Prenume }}</td>
+                        <td>{{ persoana.Varsta }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif query_type == 'persoane_casatorite_institutii' %}
+                <h2>Persoane căsătorite și instituțiile lor:</h2>
+                <table>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Instituție</th>
+                    </tr>
+                    {% for persoana in data %}
+                    <tr>
+                        <td>{{ persoana.Nume }}</td>
+                        <td>{{ persoana.Prenume }}</td>
+                        <td>{{ persoana.Nume_Institutie }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif query_type == 'numar_persoane_categorie' %}
+                <h2>Numărul de persoane în fiecare categorie:</h2>
+                <table>
+                    <tr>
+                        <th>Categorie</th>
+                        <th>Număr Persoane</th>
+                    </tr>
+                    {% for categorie in data %}
+                    <tr>
+                        <td>{{ categorie.Categorie }}</td>
+                        <td>{{ categorie.Numar_Persoane }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif query_type == 'numar_angajati_per_institutie' %}
+                <h2>Numărul de angajați în fiecare instituție:</h2>
+                <table>
+                    <tr>
+                        <th>Nume Instituție</th>
+                        <th>Număr Angajați</th>
+                    </tr>
+                    {% for institutie in data %}
+                    <tr>
+                        <td>{{ institutie.Nume_Institutie }}</td>
+                        <td>{{ institutie.Numar_Angajati }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif query_type == 'numar_angajati_edu' %}
+                <h2>Numărul de angajați în instituții de educație:</h2>
+                <table>
+                    <tr>
+                        <th>Nume Instituție</th>
+                        <th>Număr Angajați</th>
+                    </tr>
+                    {% for institutie in data %}
+                    <tr>
+                        <td>{{ institutie.Nume_Institutie }}</td>
+                        <td>{{ institutie.Numar_Angajati }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>Select a query to display results.</p>
+            {% endif %}
+        </div>
+    </div>
+    <button style="
+    transform: translate(-50%);
+    position: absolute;
+    left:50%;
+    margin-top:20px;
+" class="return-button" onclick="window.location.href='{{ url_for('index') }}';">Înapoi la Pagina Principală</button>
+</body>
+</html>

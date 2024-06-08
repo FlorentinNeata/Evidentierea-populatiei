@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidentierea populatiei orasului Bucuresti</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="index-page" style="background-image: url('{{ url_for('static', filename='poze/city.gif') }}');">
+    <div class="container">
+        <h1>Evidentierea populatiei orasului Bucuresti</h1>
+        <div class="menu-content">
+           
+            <a href="{{ url_for('persoane') }}" class="persoane"></a>
+            <a href="{{ url_for('casatorii') }}" class="casatorie"></a>
+            <a href="{{ url_for('adolescenti') }}" class="categorie1"></a>
+            <a href="{{ url_for('adulti') }}" class="categorie2"></a>
+            <a href="{{ url_for('batrani') }}" class="categorie3"></a>
+            <a href="{{ url_for('angajati') }}" class="angajati"></a>
+            <a href="{{ url_for('institutii') }}" class="institutii"></a>
+        </div>
+    </div>
+    <div id="interogari" class="text-center">
+        <h1 class="titlu-interogari">INTEROGARI</h1>
+        <div class="menu-content">
+            <a href="{{ url_for('interogari', query_type='persoane_sub_30_privat') }}" class="interogare1"></a>
+            <a href="{{ url_for('interogari', query_type='persoane_30_50_angajate_casatorite') }}" class="interogare2"></a>
+            <a href="{{ url_for('interogari', query_type='persoane_neangajate_necasatorite') }}" class="interogare3"></a>
+            <a href="{{ url_for('interogari', query_type='persoane_peste_medie') }}" class="interogare4"></a>
+            <a href="{{ url_for('interogari', query_type='persoane_casatorite_institutii') }}" class="interogare5"></a>
+            <a href="{{ url_for('interogari', query_type='numar_persoane_categorie') }}" class="interogare6"></a>
+            <a href="{{ url_for('interogari', query_type='numar_angajati_per_institutie') }}" class="interogare7"></a>
+            <a href="{{ url_for('interogari', query_type='numar_angajati_edu') }}" class="interogare8"></a>
+        </div>
+    </div>
+</body>
+</html>

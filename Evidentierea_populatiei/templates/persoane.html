@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persoane</title>
+    <script>
+        function afiseazaNumeleLung() {
+            fetch('/nume_lung')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('cel-mai-lung-nume').innerText = "Cel mai lung nume este: " + data.nume;
+                });
+        }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="persoane-page" style="background-image: url('{{ url_for('static', filename='poze/persoane.gif') }}');">
+    <div class="container">
+        <h1>Lista Persoane</h1>
+
+        <div class="table-container">
+            <table border="1">
+                <tr>
+                    <th>ID_Persoana</th>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>Varsta</th>
+                    <th>ID_Categorie</th>
+                    <th>ID_Institutie</th>
+                    <th>Actiuni</th>
+                </tr>
+                {% for persoana in persoane %}
+                <tr>
+                    <td>{{ persoana.ID_Persoana }}</td>
+                    <td>{{ persoana.Nume }}</td>
+                    <td>{{ persoana.Prenume }}</td>
+                    <td>{{ persoana.Varsta }}</td>
+                    <td>{{ persoana.ID_Categorie }}</td>
+                    <td>{{ persoana.ID_Institutie }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_persoana', id=persoana.ID_Persoana) }}">Editeaza</a>
+                        <form action="{{ url_for('delete_persoana', id=persoana.ID_Persoana) }}" method="post" style="display:inline;">
+                            <button type="submit">Sterge</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="sort-buttons">
+            <a href="{{ url_for('lista_persoane', sort_by='nume') }}"><button>Sorteaza dupa Nume</button></a>
+            <a href="{{ url_for('lista_persoane', sort_by='varsta') }}"><button>Sorteaza dupa Varsta</button></a>
+            <a href="{{ url_for('lista_persoane') }}"><button>Resetare Sortare</button></a>
+            <button onclick="afiseazaNumeleLung()">Cel mai lung nume</button>
+        </div>
+        <p id="cel-mai-lung-nume"></p> 
+
+        <form action="{{ url_for('persoane') }}" method="post" class="add-form">
+            <label for="id_persoana">ID_Persoana:</label>
+            <input type="number" id="id_persoana" name="id_persoana" required>
+            <label for="nume">Nume:</label>
+            <input type="text" id="nume" name="nume" required>
+            <label for="prenume">Prenume:</label>
+            <input type="text" id="prenume" name="prenume" required>
+            <label for="varsta">Varsta:</label>
+            <input type="number" id="varsta" name="varsta" required>
+            <label for="categorie">ID_Categorie:</label>
+            <input type="number" id="categorie" name="categorie" required>
+            <label for="institutie">ID_Institutie:</label>
+            <input type="number" id="institutie" name="institutie">
+            <button type="submit">Adauga Persoana</button>
+        </form>
+
+        <div class="menu-content">
+            <a href="{{ url_for('index') }}" class="home"></a>
+            <a href="{{ url_for('casatorii') }}" class="casatorie"></a>
+            <a href="{{ url_for('adolescenti') }}" class="categorie1"></a>
+            <a href="{{ url_for('adulti') }}" class="categorie2"></a>
+            <a href="{{ url_for('batrani') }}" class="categorie3"></a>
+            <a href="{{ url_for('angajati') }}" class="angajati"></a>
+            <a href="{{ url_for('institutii') }}" class="institutii"></a>
+        </div>
+    </div>
+</body>
+</html>

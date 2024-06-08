@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angajati</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="persoane-page">
+    <div class="container">
+        <h1>Angajati</h1>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>ID_Angajat</th>
+                    <th>ID_Persoana</th>
+                    <th>ID_Institutie</th>
+                    <th>Data_Angajare</th>
+                    <th>Salariu</th>
+                </tr>
+                {% for angajat in angajati %}
+                <tr>
+                    <td>{{ angajat.ID_Angajat }}</td>
+                    <td>{{ angajat.ID_Persoana }}</td>
+                    <td>{{ angajat.ID_Institutie }}</td>
+                    <td>{{ angajat.Data_Angajare }}</td>
+                    <td>{{ angajat.Salariu }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="menu-content">
+            <a href="{{ url_for('index') }}" class="home"></a>
+            <a href="{{ url_for('persoane') }}" class="persoane"></a>
+            <a href="{{ url_for('casatorii') }}" class="casatorie"></a>
+            <a href="{{ url_for('adolescenti') }}" class="categorie1"></a>
+            <a href="{{ url_for('adulti') }}" class="categorie2"></a>
+            <a href="{{ url_for('batrani') }}" class="categorie3"></a>
+       
+            <a href="{{ url_for('institutii') }}" class="institutii"></a>
+        </div>
+    </div>
+</body>
+</html>
